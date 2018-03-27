@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/8730447/37973653-fe353e56-31a8-11e8-8e7a-9a21d2dcce50.png">
+<img src="https://user-images.githubusercontent.com/8730447/37973863-7a31b70a-31a9-11e8-88f1-4c067b3275f2.png">
 
 µBlitz (MicroBlitz) is intended to cause chaos in your life. µBlitz is designed to be configured for a Ruby on Rails app and at random it will delete any given file. This (probably) will result in some throw errors or a complete application shut down. This is an attempt at chaos engineering.
 
