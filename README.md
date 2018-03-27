@@ -1,8 +1,6 @@
-# MicroBlitz
+<img src="https://user-images.githubusercontent.com/8730447/37973653-fe353e56-31a8-11e8-8e7a-9a21d2dcce50.png">
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/micro_blitz`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+µBlitz (MicroBlitz) is intended to cause chaos in your life. µBlitz is designed to be configured for a Ruby on Rails app and at random it will delete any given file. This (probably) will result in some throw errors or a complete application shut down. This is an attempt at chaos engineering.
 
 ## Installation
 
