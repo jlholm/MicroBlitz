@@ -9,19 +9,27 @@ module MicroBlitz
     def walk
       paths = []
 
-      Dir.foreach(@directory) do |x|
-        path = File.join(@directory, x)
+      Dir.foreach(@directory) do |file|
+        path = File.join(@directory, file)
 
-        next if x == "." || x == ".."
+        next if file == "." || file == ".."
 
         if File.directory?(path)
           walk(path)
         else
-          paths << path
+          paths.push(path) if valid_extension?(file)
         end
       end
 
       paths
     end
+
+    def valid_extension?(file)
+      WHITELISTED_EXTENSIONS.include? File.extname(file)
+    end
+
+    WHITELISTED_EXTENSIONS = [
+      ".rb"
+    ].freeze
   end
 end

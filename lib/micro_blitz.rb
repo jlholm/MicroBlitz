@@ -1,5 +1,7 @@
+require "micro_blitz/homograph_attack"
 require "micro_blitz/configuration"
 require "micro_blitz/file_finder"
+require "micro_blitz/exceptions"
 require "micro_blitz/version"
 
 module MicroBlitz
@@ -17,13 +19,19 @@ module MicroBlitz
   # Modify MicroBlitz current configuration
   # @yieldparam [MicroBlitz::Configuration] config current MicroBlitz config
   #
-  # ```
-  # MicroBlitz.configure do |config|
-  #   config.frequency = 2
-  #   ...
-  # end
-  # ```
+  # @example
+  #   MicroBlitz.configure do |config|
+  #     config.frequency = 2
+  #     ...
+  #   end
   def self.configure
     yield configuration
+  end
+
+  # Initiates MicroBlitz
+  def self.start
+    raise ConfigError, "Directory cannot be nil" if configuration.directory.nil?
+
+    @paths ||= FileFinder.new.walk
   end
 end

@@ -5,7 +5,6 @@ RSpec.describe MicroBlitz::FileFinder do
   subject { MicroBlitz::FileFinder.new }
 
   let(:directory) { subject.directory }
-  let(:paths_response) { ["test_dir/foo.txt", "test_dir/bar.txt"] }
   let!(:micro_blitz_config) do
     {
       frequency: 1,
@@ -30,39 +29,20 @@ RSpec.describe MicroBlitz::FileFinder do
   end
 
   context "#walk" do
-    before do
-      setup_directory
+    let(:valid_response) { ["#{directory}/foo.rb", "#{directory}/bar.rb"] }
+    let(:invalid_response) { ["#{directory}/foo.rb", "#{directory}/bar.rb", "#{directory}/baz.txt"] }
+
+    it "only returns a list of files with valid extensions" do
+      expect(subject.walk).to match_array(valid_response)
     end
 
-    it "returns a list of files" do
-      expect(subject.walk).to match_array(paths_response)
+    it "excludes files with invalid extensions" do
+      expect(subject.walk).to_not match_array(invalid_response)
     end
-  end
-
-  def setup_directory
-    scrub_directory
-    create_dir
-    create_file
-  end
-
-  def scrub_directory
-    FileUtils.rm_rf directory
-  end
-
-  def create_dir
-    Dir.mkdir directory
-  end
-
-  def seed_dir
-    # TODO : Create a bunch of files and extra dirs
-  end
-
-  def create_file
-    File.write("#{directory}/foo.txt", "hello")
-    File.write("#{directory}/bar.txt", "hello")
   end
 
   def configure
     Stubs.micro_blitz_config(overrides=micro_blitz_config)
+    Stubs.setup_directory(directory)
   end
 end
