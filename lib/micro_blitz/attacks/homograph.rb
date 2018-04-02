@@ -9,12 +9,13 @@ module MicroBlitz
     # The unsuspecting engineer will login to the server only to see the filename
     # has not change (so they think) and will go looking elsewhere.
 
-    def initialize(filename)
-      @filename = filename.sub(".rb", "")
+    def initialize(file)
+      @file = file.sub(".rb", "")
     end
 
     def attack
-      find_and_replace_chars @filename.chars
+      raise ::MissingFileError, "File path unknown" unless @file
+      find_and_replace_chars @file.chars
     end
 
     def find_and_replace_chars(chars)

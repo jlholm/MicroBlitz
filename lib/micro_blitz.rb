@@ -4,6 +4,7 @@ require "micro_blitz/exceptions"
 require "micro_blitz/attack_vectors"
 require "micro_blitz/attacks/homograph"
 require "micro_blitz/attacks/eraser"
+require "micro_blitz/attacks/corrupter"
 require "micro_blitz/version"
 
 module MicroBlitz

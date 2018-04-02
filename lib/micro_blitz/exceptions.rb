@@ -4,4 +4,7 @@ module MicroBlitz
 
   # Exception raised when there is an error in the configuration
   class ConfigError < Error; end
+
+  # Exception raised when there is no file to be attacked
+  class MissingFileError < Error; end
 end

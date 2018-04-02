@@ -17,6 +17,7 @@ module MicroBlitz
 
     def delete_whole
       # Simple delete `rm <path_to_file>`, pretty traceable in logs.
+      raise ::MissingFileError, "File path unknown" unless @file
       FileUtils.rm(@file)
     end
 
