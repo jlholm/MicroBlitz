@@ -33,9 +33,9 @@ module Stubs
     #   filenames: [""]
     # }
 
-    if overrides.key?(:filenames)
-      overrides.fetch(:filenames).each do |filename|
-        File.write("#{directory}/#{filename}", "")
+    if overrides.key?(:files)
+      overrides.fetch(:files).each do |filename, contents|
+        File.write("#{directory}/#{filename}", contents)
       end
     end
 
