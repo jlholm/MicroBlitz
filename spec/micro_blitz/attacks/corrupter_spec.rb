@@ -38,7 +38,6 @@ RSpec.describe MicroBlitz::Corrupter do
 
   context "#attack" do
     it "corrupts the file" do
-      subject.attack
       expect(subject.attack).to_not eq(original_file_bytes)
     end
   end
