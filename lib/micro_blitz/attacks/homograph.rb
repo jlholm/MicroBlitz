@@ -1,19 +1,21 @@
 module MicroBlitz
-  class HomographAttack
-    # HomographAttack is a method of deception wherein a threat actor (MicroBlitz)
-    # leverages the similarities of character scripts to rename existing filenames
-    # to include a look-alike character from a different language.
+  class Homograph
+    # Homograph is an attack vector utilizing a method of deception wherein
+    # a threat actor (MicroBlitz) leverages the similarities of character
+    # scripts to rename existing filenames to include a look-alike
+    # character from a different language.
     #
     # This will cause rails to throw an error as it's looking for that file.
     # The unsuspecting engineer will login to the server only to see the filename
     # has not change (so they think) and will go looking elsewhere.
 
-    def initialize(filename)
-      @filename = filename.sub(".rb", "")
+    def initialize(file)
+      @file = file.sub(".rb", "")
     end
 
     def attack
-      find_and_replace_chars @filename.chars
+      raise ::MissingFileError, "File path unknown" unless @file
+      find_and_replace_chars @file.chars
     end
 
     def find_and_replace_chars(chars)

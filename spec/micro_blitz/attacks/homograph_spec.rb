@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-RSpec.describe MicroBlitz::HomographAttack do
-  subject { MicroBlitz::HomographAttack.new(filename) }
+RSpec.describe MicroBlitz::Homograph do
+  subject { MicroBlitz::Homograph.new(filename) }
 
   let(:filename) { "foo.rb" }
 

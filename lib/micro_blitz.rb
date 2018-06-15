@@ -1,7 +1,10 @@
-require "micro_blitz/homograph_attack"
 require "micro_blitz/configuration"
 require "micro_blitz/file_finder"
 require "micro_blitz/exceptions"
+require "micro_blitz/attack_vectors"
+require "micro_blitz/attacks/homograph"
+require "micro_blitz/attacks/eraser"
+require "micro_blitz/attacks/corrupter"
 require "micro_blitz/version"
 
 module MicroBlitz
